@@ -1,4 +1,4 @@
-package org.example.productmanagement.model;
+package com.example.productmanagement.model;
 
 public class Category {
     private int id;
@@ -9,8 +9,28 @@ public class Category {
         this.name = name;
     }
 
+    public Category() {
+        this(0, "");
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
-        return "Category name=" + name + "]";
+        return  this.name;
     }
 }
