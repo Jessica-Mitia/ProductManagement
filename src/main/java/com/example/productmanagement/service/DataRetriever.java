@@ -39,7 +39,10 @@ public class DataRetriever {
     }
 
     public List<Product> getProductList(int page, int size) throws SQLException {
-        String productQuery = "SELECT id, name, price, creation_datetime FROM product LIMIT ? OFFSET ?";
+        String productQuery = "SELECT p.id, p.name, p.price, p.creation_datetime, c.id as cat_id, c.name as cat_name" +
+                " FROM product p LEFT JOIN product_category c " +
+                " ON p.id = c.product_id LIMIT ? OFFSET ?";
+
         List<Product> products = new ArrayList<>();
 
         int offset = (page - 1) * size;
@@ -55,11 +58,16 @@ public class DataRetriever {
                 System.out.println("Product list found");
 
                 while (rs.next()) {
+                    Category category = new Category();
+                    category.setId(rs.getInt("cat_id"));
+                    category.setName(rs.getString("cat_name"));
+
                     Product product = new Product();
                     product.setId(rs.getInt("id"));
                     product.setName(rs.getString("name"));
                     product.setPrice(rs.getDouble("price"));
                     product.setCreationDatetime(rs.getTimestamp("creation_datetime").toInstant());
+                    product.setCategory(category);
 
                     products.add(product);
                 }
