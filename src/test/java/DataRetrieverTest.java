@@ -2,7 +2,6 @@ import com.example.productmanagement.db.DBConnection;
 import com.example.productmanagement.model.Category;
 import com.example.productmanagement.model.Product;
 import com.example.productmanagement.service.DataRetriever;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -51,5 +50,30 @@ public class DataRetrieverTest {
         assertEquals("Clavier Logitech", products2.get(0).getName());
     }
 
+    @Test
+    void getProductByCriteriaTest() throws SQLException {
+        DataRetriever dataRetriever = new DataRetriever();
 
+        List<Product> products = dataRetriever.getProductsByCriteria("Dell", null, null, null);
+        assertEquals(1, products.size());
+        assertEquals("Laptop Dell XPS", products.get(0).getName());
+
+        List<Product> products2 = dataRetriever.getProductsByCriteria(null, "Informatique", null, null);
+        assertEquals(2, products2.size());
+        assertEquals("Ecran Samsung 27", products2.get(1).getName());
+    }
+
+    @Test
+    void getProductByCriteriaTest2() throws SQLException {
+        DataRetriever dataRetriever = new DataRetriever();
+
+        List<Product> products = dataRetriever.getProductsByCriteria(null, null, null, null, 2, 3);
+        assertEquals(3, products.size());
+        assertEquals("Casque Sony WH1000", products.get(0).getName());
+        assertEquals("Clavier Logitech", products.get(1).getName());
+
+        List<Product> products2 = dataRetriever.getProductsByCriteria("IPhone", null, null, null, 1, 5);
+        assertEquals(2, products2.size());
+        assertEquals("IPhone 13", products2.get(0).getName());
+    }
 }

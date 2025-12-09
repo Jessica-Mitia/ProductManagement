@@ -1,6 +1,7 @@
 package com.example.productmanagement.model;
 
 import java.time.Instant;
+import java.util.Objects;
 
 public class Product {
     private int id;
@@ -59,6 +60,19 @@ public class Product {
     @Override
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", category=" + category + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return id == product.id && name.equals(product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     private String getCategoryName() {
