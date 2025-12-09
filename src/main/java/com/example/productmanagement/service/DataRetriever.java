@@ -21,7 +21,6 @@ public class DataRetriever {
              PreparedStatement ps = con.prepareStatement(categoryQuery);
              ResultSet rs = ps.executeQuery()) {
 
-            System.out.println("All categories found");
             while (rs.next()) {
                 Category category = new Category();
 
