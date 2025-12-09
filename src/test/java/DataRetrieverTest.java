@@ -43,11 +43,11 @@ public class DataRetrieverTest {
 
         List<Product> products = dataRetriever.getProductList(1, 4);
         assertEquals(4, products.size());
-        assertEquals("Laptop Dell XPS", products.get(0).getName());
+        assertEquals("Laptop Dell XPS", products.getFirst().getName());
 
         List<Product> products2 = dataRetriever.getProductList(2, 3);
         assertEquals(3, products2.size());
-        assertEquals("Clavier Logitech", products2.get(0).getName());
+        assertEquals("Clavier Logitech", products2.getFirst().getName());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class DataRetrieverTest {
 
         List<Product> products = dataRetriever.getProductsByCriteria("Dell", null, null, null);
         assertEquals(1, products.size());
-        assertEquals("Laptop Dell XPS", products.get(0).getName());
+        assertEquals("Laptop Dell XPS", products.getFirst().getName());
 
         List<Product> products2 = dataRetriever.getProductsByCriteria(null, "Informatique", null, null);
         assertEquals(2, products2.size());
@@ -69,11 +69,11 @@ public class DataRetrieverTest {
 
         List<Product> products = dataRetriever.getProductsByCriteria(null, null, null, null, 2, 3);
         assertEquals(3, products.size());
-        assertEquals("Casque Sony WH1000", products.get(0).getName());
+        assertEquals("Casque Sony WH1000", products.getFirst().getName());
         assertEquals("Clavier Logitech", products.get(1).getName());
 
         List<Product> products2 = dataRetriever.getProductsByCriteria("IPhone", null, null, null, 1, 5);
         assertEquals(2, products2.size());
-        assertEquals("IPhone 13", products2.get(0).getName());
+        assertEquals("IPhone 13", products2.getFirst().getName());
     }
 }
