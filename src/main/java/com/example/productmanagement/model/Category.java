@@ -33,7 +33,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return  this.name;
+        return "Category [ id=" + this.id + ", name=" + this.name + "]";
     }
 
     @Override
