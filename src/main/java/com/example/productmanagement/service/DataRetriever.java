@@ -38,9 +38,11 @@ public class DataRetriever {
     }
 
     public List<Product> getProductList(int page, int size) throws SQLException {
-        String productQuery = "SELECT p.id, p.name, p.price, p.creation_datetime, c.id as cat_id, c.name as cat_name" +
-                " FROM product p LEFT JOIN product_category c " +
-                " ON p.id = c.product_id LIMIT ? OFFSET ?";
+        String productQuery = """
+                SELECT p.id, p.name, p.price, p.creation_datetime, c.id as cat_id, c.name as cat_name
+                FROM product p LEFT JOIN product_category c 
+                ON p.id = c.product_id LIMIT ? OFFSET ?
+                """;
 
         DBConnection dbConnection = new DBConnection();
         List<Product> products = new ArrayList<>();
