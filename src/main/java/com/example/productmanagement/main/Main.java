@@ -9,11 +9,10 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         DataRetriever dataRetriever = new DataRetriever();
 
-        // getAllCategories()
         System.out.println("Method getAllCategories()");
         System.out.println(dataRetriever.getAllCategories());
 
-        // getProductList()
+
         System.out.println("____________________________________");
         System.out.println("Method getProductList()");
         System.out.println(dataRetriever.getProductList(1,10));
@@ -21,7 +20,7 @@ public class Main {
         System.out.println(dataRetriever.getProductList(1,3));
         System.out.println(dataRetriever.getProductList(2,2));
 
-        // getProductsByCriteria()
+
         System.out.println("____________________________________");
         System.out.println("Method getProductByCriteria()");
         System.out.println(dataRetriever.getProductsByCriteria("Dell", null, null, null));
@@ -33,7 +32,7 @@ public class Main {
         System.out.println(dataRetriever.getProductsByCriteria(null, "audio", Instant.parse("2024-01-01T00:00:00Z"), Instant.parse("2024-12-01T00:00:00Z")));
         System.out.println(dataRetriever.getProductsByCriteria(null, null, null, null));
 
-        //getProductsByCriteria() avec pagination
+
         System.out.println("____________________________________");
         System.out.println("Method getProductByCriteria() with pagination");
         System.out.println(dataRetriever.getProductsByCriteria(null, null, null, null, 1, 10));
